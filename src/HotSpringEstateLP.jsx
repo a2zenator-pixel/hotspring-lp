@@ -180,132 +180,128 @@ export default function HotSpringEstateLP({
     );
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
-      <header className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center text-white font-semibold">JP</div>
-            <div>
-              <h1 className="text-lg font-semibold">Hot Spring Estate — Owner Direct</h1>
-              <p className="text-sm text-gray-500">Private, off-market opportunity — Japanese estate</p>
-            </div>
+return (
+  <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+    <header className="bg-white border-b">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center text-white font-semibold">JP</div>
+          <div>
+            <h1 className="text-lg font-semibold">Hot Spring Estate — Owner Direct</h1>
+            <p className="text-sm text-gray-500">Private, off-market opportunity — Japanese estate</p>
+          </div>
+        </div>
+
+        <nav className="flex items-center gap-4">
+          <div className="flex items-center gap-2 border rounded-md overflow-hidden">
+            <button onClick={() => setLang('ja')} className={`px-3 py-2 ${lang === 'ja' ? 'bg-gray-100' : ''}`}>日本語</button>
+            <button onClick={() => setLang('zh')} className={`px-3 py-2 ${lang === 'zh' ? 'bg-gray-100' : ''}`}>繁體中文</button>
+            <button onClick={() => setLang('en')} className={`px-3 py-2 ${lang === 'en' ? 'bg-gray-100' : ''}`}>English</button>
           </div>
 
-          <nav className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-            <div className="flex items-center gap-2 border rounded-md overflow-hidden">
-              <button onClick={() => setLang('ja')} className={`px-3 py-2 ${lang === 'ja' ? 'bg-gray-100' : ''}`}>日本語</button>
-              <button onClick={() => setLang('zh')} className={`px-3 py-2 ${lang === 'zh' ? 'bg-gray-100' : ''}`}>繁體中文</button>
-              <button onClick={() => setLang('en')} className={`px-3 py-2 ${lang === 'en' ? 'bg-gray-100' : ''}`}>English</button>
-            </div>
+          <a href={mailTo('Brochure Request - Hot Spring Estate')} className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg shadow">
+            {lang === 'ja' ? 'お問い合わせ' : lang === 'zh' ? '聯絡我們' : 'Contact'}
+          </a>
+        </nav>
+      </div>
+    </header>
 
-            <a href={mailTo('Brochure Request - Hot Spring Estate')} className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg shadow">
-              {lang === 'ja' ? 'お問い合わせ' : lang === 'zh' ? '聯絡我們' : 'Contact'}
-            </a>
-          </nav>
-        </div>
-      </header>
+    <main className="max-w-7xl mx-auto px-6 py-12">
+      <section className="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 className="text-3xl font-bold mb-4">{t.title}</h2>
+          <p className="text-lg text-gray-600 mb-6">{t.subtitle}</p>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        <section className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
-  {/* 右の写真ブロックを先に置く or orderクラスで制御 */}
-</section>
-          <div>
-            <h2 className="text-3xl font-bold mb-4">{t.title}</h2>
-            <p className="text-lg text-gray-600 mb-6">{t.subtitle}</p>
+          <div className="bg-white p-6 rounded-2xl shadow">
+            <h3 className="font-semibold mb-3">{t.overviewTitle}</h3>
+            <ul className="list-disc pl-5 text-gray-700 space-y-2">
+              {t.overviewLines.map((line, idx) => (
+                <li key={idx}>{line}</li>
+              ))}
+            </ul>
 
-            <div className="space-y-4 order-1 lg:order-2">
-              <h3 className="font-semibold mb-3">{t.overviewTitle}</h3>
-              <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                {t.overviewLines.map((line, idx) => (
-                  <li key={idx}>{line}</li>
+            <div className="mt-6">
+              <h4 className="font-semibold mb-2">{t.featuresTitle}</h4>
+              <ul className="list-inside space-y-2 text-gray-700">
+                {t.featuresLines.map((line, idx) => (
+                  <li key={idx}>• {line}</li>
                 ))}
               </ul>
-
-              <div className="order-2 lg:order-1">
-                <h4 className="font-semibold mb-2">{t.featuresTitle}</h4>
-                <ul className="list-inside space-y-2 text-gray-700">
-                  {t.featuresLines.map((line, idx) => (
-                    <li key={idx}>• {line}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className="mt-6 text-sm text-gray-500">{t.contactCTA}</p>
-
-              <div className="mt-4 flex items-center gap-3">
-                <a href={mailTo('Brochure Request - Hot Spring Estate')} className="px-4 py-2 bg-emerald-600 text-white rounded-md shadow">{t.contactButton}</a>
-                <button onClick={() => alert('Request recorded. Replace this with API call in production.')} className="px-4 py-2 border rounded-md">{lang === 'ja' ? '詳細を見る' : lang === 'zh' ? '更多資訊' : 'Learn More'}</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img
-                src={imgSrc}
-                alt="Hot Spring Estate Drone View"
-                className="w-full h-72 object-cover rounded-2xl shadow-lg cursor-zoom-in"
-                onClick={() => openLightbox(0)}
-                onError={() => setImgSrc(DEFAULT_HERO_DATA_URL)}
-              />
-            </div>
-            {renderGallery()}
-          </div>
-        </section>
-      </main>
-
-      {/* Lightbox overlay */}
-      {lightboxOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center"
-          role="dialog"
-          aria-modal="true"
-          onClick={closeLightbox}
-        >
-          <div className="relative max-w-6xl w-[92vw] max-h-[88vh]" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={lightboxImages[clampIndex(lightboxIndex, lightboxImages.length)]}
-              alt={`Preview ${lightboxIndex + 1}`}
-              className="max-h-[80vh] w-auto mx-auto rounded-xl shadow-lg"
-              onError={(e) => { e.currentTarget.src = DEFAULT_HERO_DATA_URL; }}
-            />
-
-            {/* Controls */}
-            <button
-              aria-label="Close"
-              className="absolute -top-10 right-0 px-3 py-1 bg-white/90 rounded-md shadow hover:bg-white"
-              onClick={closeLightbox}
-            >✕</button>
-
-            <div className="absolute inset-y-0 left-0 flex items-center">
-              <button aria-label="Previous" className="m-2 px-3 py-2 bg-white/90 rounded-md shadow hover:bg-white" onClick={prevImage}>←</button>
-            </div>
-            <div className="absolute inset-y-0 right-0 flex items-center">
-              <button aria-label="Next" className="m-2 px-3 py-2 bg-white/90 rounded-md shadow hover:bg-white" onClick={nextImage}>→</button>
             </div>
 
-            {/* Thumbnails */}
-            <div className="mt-3 grid grid-cols-6 gap-2">
-              {lightboxImages.map((src, i) => (
-                <img
-  key={i}
-  src={src}
-  alt={`Thumb ${i + 1}`}
-  loading="lazy"
-  decoding="async"
-  className={`h-16 w-full object-cover rounded cursor-pointer border ${i === lightboxIndex ? 'border-white' : 'border-transparent'}`}
-  onClick={() => setLightboxIndex(i)}
-  onError={(e) => { e.currentTarget.src = DEFAULT_HERO_DATA_URL; }}
-/>
+            <p className="mt-6 text-sm text-gray-500">{t.contactCTA}</p>
 
-              ))}
+            <div className="mt-4 flex items-center gap-3">
+              <a href={mailTo('Brochure Request - Hot Spring Estate')} className="px-4 py-2 bg-emerald-600 text-white rounded-md shadow">{t.contactButton}</a>
+              <button onClick={() => alert('Request recorded. Replace this with API call in production.')} className="px-4 py-2 border rounded-md">
+                {lang === 'ja' ? '詳細を見る' : lang === 'zh' ? '更多資訊' : 'Learn More'}
+              </button>
             </div>
           </div>
         </div>
-      )}
-    </div>
-  );
+
+        <div className="space-y-4">
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src={imgSrc}
+              alt="Hot Spring Estate Drone View"
+              className="w-full h-72 object-cover rounded-2xl shadow-lg cursor-zoom-in"
+              onClick={() => openLightbox(0)}
+              onError={() => setImgSrc(DEFAULT_HERO_DATA_URL)}
+            />
+          </div>
+          {renderGallery()}
+        </div>
+      </section>
+    </main>
+
+    {/* Lightbox overlay */}
+    {lightboxOpen && (
+      <div
+        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center"
+        role="dialog"
+        aria-modal="true"
+        onClick={closeLightbox}
+      >
+        <div className="relative max-w-6xl w-[92vw] max-h-[88vh]" onClick={(e) => e.stopPropagation()}>
+          <img
+            src={lightboxImages[clampIndex(lightboxIndex, lightboxImages.length)]}
+            alt={`Preview ${lightboxIndex + 1}`}
+            className="max-h-[80vh] w-auto mx-auto rounded-xl shadow-lg"
+            onError={(e) => { e.currentTarget.src = DEFAULT_HERO_DATA_URL; }}
+          />
+
+          <button
+            aria-label="Close"
+            className="absolute -top-10 right-0 px-3 py-1 bg-white/90 rounded-md shadow hover:bg-white"
+            onClick={closeLightbox}
+          >✕</button>
+
+          <div className="absolute inset-y-0 left-0 flex items-center">
+            <button aria-label="Previous" className="m-2 px-3 py-2 bg-white/90 rounded-md shadow hover:bg-white" onClick={prevImage}>←</button>
+          </div>
+          <div className="absolute inset-y-0 right-0 flex items-center">
+            <button aria-label="Next" className="m-2 px-3 py-2 bg-white/90 rounded-md shadow hover:bg-white" onClick={nextImage}>→</button>
+          </div>
+
+          <div className="mt-3 grid grid-cols-6 gap-2">
+            {lightboxImages.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`Thumb ${i + 1}`}
+                className={`h-16 w-full object-cover rounded cursor-pointer border ${i === lightboxIndex ? 'border-white' : 'border-transparent'}`}
+                onClick={() => setLightboxIndex(i)}
+                onError={(e) => { e.currentTarget.src = DEFAULT_HERO_DATA_URL; }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+);
+
 }
 
 // ---------------- inline tests (lightweight) ----------------
