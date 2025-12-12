@@ -94,17 +94,15 @@ const CONTENT = {
 export default function HotSpringEstateLP({
   initialLang = 'ja',
   email = 'xxxx@example.com',
-  // Default can be swapped to any direct-image URL (NOT a page URL)
- heroPhotoUrl="/images/hero.jpg"
-galleryUrls={[
-  "/images/g1.jpg",
-  "/images/g2.jpg",
-  "/images/g3.jpg",
-  "/images/g4.jpg",
-  "/images/g5.jpg",
-  "/images/g6.jpg",
-]}
-
+  heroPhotoUrl = "/images/hero.jpg",
+  galleryUrls = [
+    "/images/g1.jpg",
+    "/images/g2.jpg",
+    "/images/g3.jpg",
+    "/images/g4.jpg",
+    "/images/g5.jpg",
+    "/images/g6.jpg",
+  ],
 }) {
   const [lang, setLang] = useState(initialLang);
   const t = CONTENT[lang] || CONTENT.ja;
