@@ -102,8 +102,7 @@ export default function HotSpringEstateLP({
     "https://i.pinimg.com/1200x/2a/35/e3/2a35e3abb2913a0e601ecedafeed34c0.jpg",
     "https://i.pinimg.com/1200x/32/a0/fa/32a0fa156f465b46ac8b9fa6b88850d5.jpg",
  "https://i.pinimg.com/736x/7a/2d/3b/7a2d3bdccb59a5434af829cd349405b8.jpg", //
- "https://i.pinimg.com/736x/f4/79/e1/f479e1fb21bfdecac250c53f10c60e4a.jpg", //
-
+ "https://i.pinimg.com/736x/f4/79/e1/f479e1fb21bfdecac250c53f10c60e4a.jpg?v=2", //
   ],
 }) {
   const [lang, setLang] = useState(initialLang);
