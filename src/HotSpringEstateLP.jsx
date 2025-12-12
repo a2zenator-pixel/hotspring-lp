@@ -159,6 +159,8 @@ export default function HotSpringEstateLP({
               key={idx}
               src={selectHeroSrc((url || '').trim())}
               alt={`Gallery ${idx + 1}`}
+              loading="lazy"
+              decoding="async"
               className="h-36 w-full object-cover rounded-lg shadow cursor-zoom-in"
               onClick={() => openLightbox(1 + idx)}
               onError={(e) => { e.currentTarget.src = DEFAULT_HERO_DATA_URL; }}
@@ -190,7 +192,7 @@ export default function HotSpringEstateLP({
             </div>
           </div>
 
-          <nav className="flex items-center gap-4">
+          <nav className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <div className="flex items-center gap-2 border rounded-md overflow-hidden">
               <button onClick={() => setLang('ja')} className={`px-3 py-2 ${lang === 'ja' ? 'bg-gray-100' : ''}`}>日本語</button>
               <button onClick={() => setLang('zh')} className={`px-3 py-2 ${lang === 'zh' ? 'bg-gray-100' : ''}`}>繁體中文</button>
@@ -205,12 +207,14 @@ export default function HotSpringEstateLP({
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-12">
-        <section className="grid lg:grid-cols-2 gap-10 items-center">
+        <section className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+  {/* 右の写真ブロックを先に置く or orderクラスで制御 */}
+</section>
           <div>
             <h2 className="text-3xl font-bold mb-4">{t.title}</h2>
             <p className="text-lg text-gray-600 mb-6">{t.subtitle}</p>
 
-            <div className="bg-white p-6 rounded-2xl shadow">
+            <div className="space-y-4 order-1 lg:order-2">
               <h3 className="font-semibold mb-3">{t.overviewTitle}</h3>
               <ul className="list-disc pl-5 text-gray-700 space-y-2">
                 {t.overviewLines.map((line, idx) => (
@@ -218,7 +222,7 @@ export default function HotSpringEstateLP({
                 ))}
               </ul>
 
-              <div className="mt-6">
+              <div className="order-2 lg:order-1">
                 <h4 className="font-semibold mb-2">{t.featuresTitle}</h4>
                 <ul className="list-inside space-y-2 text-gray-700">
                   {t.featuresLines.map((line, idx) => (
@@ -285,13 +289,16 @@ export default function HotSpringEstateLP({
             <div className="mt-3 grid grid-cols-6 gap-2">
               {lightboxImages.map((src, i) => (
                 <img
-                  key={i}
-                  src={src}
-                  alt={`Thumb ${i + 1}`}
-                  className={`h-16 w-full object-cover rounded cursor-pointer border ${i === lightboxIndex ? 'border-white' : 'border-transparent'}`}
-                  onClick={() => setLightboxIndex(i)}
-                  onError={(e) => { e.currentTarget.src = DEFAULT_HERO_DATA_URL; }}
-                />
+  key={i}
+  src={src}
+  alt={`Thumb ${i + 1}`}
+  loading="lazy"
+  decoding="async"
+  className={`h-16 w-full object-cover rounded cursor-pointer border ${i === lightboxIndex ? 'border-white' : 'border-transparent'}`}
+  onClick={() => setLightboxIndex(i)}
+  onError={(e) => { e.currentTarget.src = DEFAULT_HERO_DATA_URL; }}
+/>
+
               ))}
             </div>
           </div>
